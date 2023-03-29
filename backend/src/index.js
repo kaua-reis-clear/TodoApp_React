@@ -32,6 +32,11 @@ app.delete('/:id', (req, res) => {
     db.collection('todo').doc(req.params.id).delete().then(() => res.send('deletado')).catch(err => console.error(err))
 });
 
+app.put('/done/:id', (req, res) => {
+    console.log(eval(req.query.done))
+    db.collection('todo').doc(req.params.id).set({done: !req.body.done}, {merge: true}).then(() => res.send('alterado'))
+})
+
 app.listen(port, () => {
   console.log(`Server started on ${port}`);
 });
