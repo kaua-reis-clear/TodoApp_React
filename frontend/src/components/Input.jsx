@@ -6,7 +6,7 @@ function Input(props) {
   const [desc, setDesc] = useState('');
 
   function addTodo() {
-    axios.post('http://localhost:8080', {desc: desc}).then(() => console.log('adicionado')).catch(error => console.error(error))
+    axios.post('http://localhost:8080', {desc: desc}).then(() => document.location.reload()).catch(error => console.error(error))
   }
 
   return (

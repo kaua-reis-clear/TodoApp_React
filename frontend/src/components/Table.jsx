@@ -16,6 +16,10 @@ function Table(props) {
     });
   }
 
+  function deleteTodo(id) {
+    axios.delete(`http://localhost:8080/${id}`).then(() => document.location.reload()).catch(error => console.error(error))
+  }
+
   return (
     <table>
       <thead>
@@ -32,7 +36,7 @@ function Table(props) {
               <td className="actions">
                 <button>✓</button>
                 <button>✎</button>
-                <button>X</button>
+                <button onClick={() => deleteTodo(item.id)}>X</button>
               </td>
             </tr>
           );
