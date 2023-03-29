@@ -1,0 +1,11 @@
+.table {
+    margin-top: 50px;
+}
+
+td, th {
+    padding: 0 10px;
+}
+
+button {
+    margin-right: 5px;
+}
