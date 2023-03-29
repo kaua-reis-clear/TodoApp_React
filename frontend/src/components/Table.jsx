@@ -11,7 +11,8 @@ function Table(props) {
             <td>{item.id}</td>
             <td>{item.desc}</td>
             <td className='actions'>
-              <button className='done'>✓</button>
+              <button>✓</button>
+              <button>✎</button>
               <button>X</button>
             </td>
           </tr>
