@@ -10,7 +10,7 @@ function Table(props) {
           <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.desc}</td>
-            <td>
+            <td className='actions'>
               <button className='done'>✓</button>
               <button>X</button>
             </td>
@@ -21,7 +21,7 @@ function Table(props) {
   }
 
   return (
-    <table className='table'>
+    <table>
       <thead>
         <tr>
           <th>ID</th>
