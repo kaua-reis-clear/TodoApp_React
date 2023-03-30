@@ -1,0 +1,4 @@
+const URL = 'http://localhost:8080';
+const REQUESTED_TODOS = 'REQUESTED_TODOS';
+const INPUTED_TODO = 'INPUTED_TODO';
+export { URL, REQUESTED_TODOS, INPUTED_TODO };
