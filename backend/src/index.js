@@ -21,20 +21,23 @@ const db = getFirestore();
 
 app.get('/', (req, res) => {
   const docs = [];
-  db.collection('todo').get().then(data => data.docs.map(doc => docs.push({id: doc.id, desc: doc.data().desc, done: doc.data().done}))).then(() => res.json(docs));
+  db.collection('todo').get().then(data => data.docs.map(doc => docs.push({id: doc.id, desc: doc.data().desc, done: doc.data().done}))).then(() => res.json(docs)).catch(err => console.error(err));
 });
 
 app.post('/', (req, res) => {
-    db.collection('todo').add({desc: req.body.desc, done: false}).then(_ => res.send('adicionado'))
+    db.collection('todo').add({desc: req.body.desc, done: false}).then(_ => res.send('adicionado')).catch(err => console.error(err));
 });
 
 app.delete('/:id', (req, res) => {
-    db.collection('todo').doc(req.params.id).delete().then(() => res.send('deletado')).catch(err => console.error(err))
+    db.collection('todo').doc(req.params.id).delete().then(() => res.send('deletado')).catch(err => console.error(err));
 });
 
 app.put('/done/:id', (req, res) => {
-    console.log(eval(req.query.done))
-    db.collection('todo').doc(req.params.id).set({done: !req.body.done}, {merge: true}).then(() => res.send('alterado'))
+    db.collection('todo').doc(req.params.id).set({done: !req.body.done}, {merge: true}).then(() => res.send('alterado')).catch(err => console.error(err));
+})
+
+app.put('/:id', (req, res) => {
+  db.collection('todo').doc(req.params.id).set({desc: req.body.desc}, {merge: true}).then(() => res.send('descrição alterada')).catch(err => console.error(err));
 })
 
 app.listen(port, () => {
